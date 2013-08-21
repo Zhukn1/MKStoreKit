@@ -751,7 +751,11 @@ static MKStoreManager* _sharedStoreManager;
   NSLog(@"Failed transaction: %@", [transaction description]);
   NSLog(@"error: %@", transaction.error);
 #endif
-	
+    if (transaction.error.code == 0) //no connection
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Couldn't connect   to the iTunes Store" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert show];
+    }
   [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
   
   if(self.onTransactionCancelled)

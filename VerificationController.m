@@ -332,26 +332,7 @@ static VerificationController *singleton;
             }
         }
 #endif
-    } else {
-        // Pre iOS 6
-        // Removes the compiler warning in the newest Xcode.
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        NSString *localIdentifier           = [UIDevice currentDevice].uniqueIdentifier;
-#pragma clang diagnostic pop
-        NSString *purchaseInfoUniqueId      = [purchaseInfoFromTransaction objectForKey:@"unique-identifier"];
-
-        
-        if (![purchaseInfoUniqueId isEqualToString:verifiedReceiptUniqueIdentifier]
-            || ![purchaseInfoUniqueId isEqualToString:localIdentifier])
-        {
-            // Comment this line out to test in the Simulator.
-            failCount++;
-        }        
     }
-    
-    
-    // Do addition time checks for the transaction and receipt.
     
     if(failCount != 0)
     {
