@@ -741,7 +741,10 @@ static MKStoreManager* _sharedStoreManager;
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
-  [self restoreCompleted];
+    if (queue.transactions.count > 0)
+        [self restoreCompleted];
+    else
+        [self restoreFailedWithError:nil];
 }
 
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
