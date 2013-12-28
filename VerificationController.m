@@ -36,9 +36,7 @@ static VerificationController *singleton;
     if (!dictionaryParsed)
     {
         if (error)
-        {
-#warning Handle the error here.
-        }
+        { }
         return nil;
     }
     return dictionaryParsed;
@@ -54,9 +52,7 @@ static VerificationController *singleton;
     if (!dictionaryParsed)
     {
         if (error)
-        {
-#warning Handle the error here.
-        }
+        { }
         return nil;
     }
     return dictionaryParsed;
@@ -88,7 +84,6 @@ static VerificationController *singleton;
     
     NSData *payloadData = [payload dataUsingEncoding:NSUTF8StringEncoding];
     
-#warning Check for the correct itms verify receipt URL
     // Use ITMS_SANDBOX_VERIFY_RECEIPT_URL while testing against the sandbox.
     NSString *serverURL = ITMS_PROD_VERIFY_RECEIPT_URL;
     
@@ -272,7 +267,7 @@ static VerificationController *singleton;
     // The receipt is valid, so checked the receipt specifics now.
     
     NSDictionary *verifiedReceiptReceiptDictionary  = [verifiedReceiptDictionary objectForKey:@"receipt"];
-    NSString *verifiedReceiptUniqueIdentifier       = [verifiedReceiptReceiptDictionary objectForKey:@"unique_identifier"];
+//    NSString *verifiedReceiptUniqueIdentifier       = [verifiedReceiptReceiptDictionary objectForKey:@"unique_identifier"];
     NSString *transactionIdFromVerifiedReceipt      = [verifiedReceiptReceiptDictionary objectForKey:@"transaction_id"];
     
     // Get the transaction's receipt data from the transactionsReceiptStorageDictionary
@@ -355,8 +350,6 @@ static VerificationController *singleton;
     if (isOk)
     {
         //Validation suceeded. Unlock content here.
-#warning Validation suceeded. Unlock content here.
-
     }
 }
 
@@ -687,22 +680,18 @@ outLabel:
 
 - (NSString *)encodeBase64:(const uint8_t *)input length:(NSInteger)length
 {
-#warning Replace this method.
     return nil;
 }
 
 
 - (NSString *)decodeBase64:(NSString *)input length:(NSInteger *)length
 {
-#warning Replace this method.
     return nil;
 }
 
-#warning Implement this function.
 char* base64_encode(const void* buf, size_t size)
 { return NULL; }
 
-#warning Implement this function.
 void * base64_decode(const char* s, size_t * data_len)
 { return NULL; }
 
